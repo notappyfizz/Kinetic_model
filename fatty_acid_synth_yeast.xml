@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:dc="http://purl.org/dc/elements/1.1/" metaid="_165517" level="2" version="4">
+    <model metaid="metaid" id="FAS_yeast" name="Fatty acid synthesis yeast">
+        <!-- Defining all the units we are using-->
+        <listOfUnitDefinitions>
+  <unitDefinition metaid="_1" id="substance" name="millimole">
+    <listOfUnits>
+      <unit metaid="_2" kind="mole" scale="-3"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_3" id="time" name="minute">
+    <listOfUnits>
+      <unit metaid="_4" kind="second" multiplier="60"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_5" id="mM" name="mM">
+    <listOfUnits>
+      <unit metaid="_6" kind="mole" scale="-3"/>
+      <unit metaid="_7" kind="litre" exponent="-1"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_8" id="mM_per_min" name="mM per minute">
+    <listOfUnits>
+      <unit metaid="_9" kind="mole" scale="-3"/>
+      <unit metaid="_10" kind="litre" exponent="-1"/>
+      <unit metaid="_11" kind="second" exponent="-1" multiplier="60"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_12" id="per_min" name="per minute">
+    <listOfUnits>
+      <unit metaid="_13" kind="second" exponent="-1" multiplier="60"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_14" id="per_mM_per_min" name="per mM per minute">
+    <listOfUnits>
+      <unit metaid="_15" kind="mole" exponent="-1" scale="-3"/>
+      <unit metaid="_16" kind="litre" scale="1"/>
+      <unit metaid="_17" kind="second" exponent="-1" scale="1" multiplier="60"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_18" id="per_mM_squared_per_min" name="per mM squared per minute">
+    <listOfUnits>
+      <unit metaid="_19" kind="mole" exponent="-2" scale="-3"/>
+      <unit metaid="_20" kind="litre" exponent="2" scale="1"/>
+      <unit metaid="_21" kind="second" exponent="-1" scale="1" multiplier="60"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid="_22" id="per_mM" name="per mM">
+    <listOfUnits>
+      <unit metaid="_23" kind="mole" exponent="-1" scale="-3"/>
+      <unit metaid="_24" kind="litre" scale="1"/>
+    </listOfUnits>
+  </unitDefinition>
+  <unitDefinition metaid = "_200" id = "litre_per_min" name = "litre per minute">
+    <listOfUnits>
+        <unit metaid = "_201" kind = "litre" exponent = "1"/>
+        <unit metaid = "_202" kind = "second" exponent = "-1" multiplier = "60"/>
+    </listOfUnits>
+   </unitDefinition> 
+</listOfUnitDefinitions>
+<!-- End of unit definitions-->
+
+        <!--Defining compartments involved-->
+        <listOfCompartments>
+            <compartment metaid = "metaid_cytoplasm" id = "cytoplasm" name = "cytoplasm" size ="1" spatialDimensions = "3"/>
+            <compartment metaid ="metaid_extracellular" id ="extracellular" name ="extracullar" size ="1" spatialDimensions = "3"/>
+            <compartment metaid = "metaid_mitochondria" id = "mitochondria" name = "mitochondria" size = "0.5" spatialDimensions = "3"/>
+        </listOfCompartments>
+        <!--end of list of compartments-->
+        
+
+        <!-- Defining all the species-->
+
+        <listOfSpecies>
+            <species metaid = "metaid_GLCi" id = "GLCi" name ="glucose" compartment = "cytoplasm" initialConcentration = "0.087"/>
+            <species metaid = "metaid_G6P" id = "G6P" name ="glucose-6-phosphate" compartment = "cytoplasm" initialConcentration = "1.39"/>
+            <species metaid = "metaid_F6P" id = "F6P" name = "fructose-6-phosphate" compartment = "cytoplasm" initialConcentration = "0.28"/>
+            <species metaid = "metaid_F16P" id = "F16P" name = "fructose-1,6-bisphosphate" compartment = "cytoplasm" initialConcentration = "0.1"/>
+            <species metaid = "metaid_GP" id = "GP" name = "glycerone-phosphate" compartment ="cytoplasm" initialConcentration = "2.585"/>
+            <species metaid = "metaid_G3P" id = "G3P" name = "glyceraldehyde-3-phosphate" compartment = "cytoplasm" initialConcentration = "2.585"/>
+            <species metaid = "metaid_NADH" id = "NADH" name = "NADH" compartment = "cytoplasm" initialConcentration="0.39"/>
+            <species metaid = "metaid_NAD" id="NAD" name = "NAD" compartment = "cytoplasm" initialConcentration = "1.2"/>
+            <species metaid = "metaid_PHOS" id = "PHOS" name = "phosphate" compartment = "cytoplasm" initialConcentration = "30" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_BPG" id = "BPG" name = "1,3-bisphosphoglycerate" compartment = "cytoplasm" initialConcentration = "0"/>
+            <species metaid = "metaid_P3G" id = "P3G" name = "3-phosphoglycerate" compartment="cytoplasm" initialConcentration="0.1"/>
+            <species metaid = "metaid_P2G" id = "P2G" name = "2-phosphoglycerate" compartment = "cytoplasm" initialConcentration ="0.1"/>
+            <species metaid = "metaid_PEP" id = "PEP" name = "phosphoenolpyruvate" compartment = "cytoplasm" initialConcentration = "0.1"/>
+            <species metaid = "metaid_PYR" id= "PYR" name = "pyruvate" compartment = "cytoplasm" initialConcentration = "3.36"/>
+            <species metaid = "metaid_ACE" id = "ACE" name = "acetaldehyde" compartment= "cytoplasm" initialConcentration = "0.04"/>
+            <species metaid = "metaid_GLCo" id = "GLCo" name = "glucose" compartment = "extracellular" initialConcentration = "1" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_GLY" id = "GLY" name = "glycerol" compartment = "cytoplasm" initialConcentration= "0.15"/>
+            <species metaid = "metaid_ETOH" id = "ETOH" name = "ethanol" compartment = "cytoplasm" initialConcentration = "50" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_CO2" id = "CO2" name = "CO2" compartment= "cytoplasm" initialConcentration = "8" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_ATP" id = "ATP" name = "ATP" compartment = "cytoplasm" initialConcentration = "1.66116"/>
+            <species metaid = "metaid_ADP" id = "ADP" name = "ADP" compartment = "cytoplasm" constant="true" initialConcentration = "1.6769"/>
+            <species metaid = "metaid_AMP" id = "AMP" name = "AMP" compartment = "cytoplasm" initialConcentration = "0.76156"/>
+            <species metaid = "metaid_F26BP" id = "F26BP" name = "fructose-2,6-bisphosphate" compartment = "cytoplasm" initialConcentration = "0.02" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_GLYout" id = "GLYout" name = "glycerol" compartment = "extracellular" initialConcentration = "8.67" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_H" id = "H" name = "H+" compartment = "cytoplasm" initialConcentration = "50" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_H2O" id = "H2O" name = "H2O" compartment = "cytoplasm" initialConcentration = "50" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "_metaid_PYR_M" id = "PYR_M" name = "pyruvate" compartment = "mitochondria" initialConcentration = "0.001"/>
+            <species metaid = "metaid_coA_M" id = "coA_M" name = "coA" compartment = "mitochondria" initialConcentration = "1"/>
+            <species metaid = "metaid_NAD_M" id ="NAD_M" name = "NAD" compartment = "mitochondria" initialConcentration = "1.2"/>
+            <species metaid = "metaid_ac_coA_M" id = "ac_coA_M" name = "acetyl-coA" compartment = "mitochondria" initialConcentration = "0.1"/>
+            <species metaid = "metaid_NADH_M" id = "NADH_M" name = "NADH" compartment = "mitochondria" initialConcentration = "0.39"/>
+            <species metaid = "metaid_CO2_M" id = "CO2_M" name = "CO2" compartment = "mitochondria" initialConcentration = "2" />
+            <species metaid = "metaid_OAA_M" id = "OAA_M" name = "oxaloacetate" compartment = "mitochondria" initialConcentration = "2"/>
+            <species metaid = "metaid_H2O_M" id = "H2O_M" name = "H2O" compartment = "mitochondria" initialConcentration = "50" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_CIT_M" id = "CIT_M" name = "citrate" compartment = "mitochondria" initialConcentration = "0.5"/>
+            <species metaid = "metaid_CIT" id = "CIT" name = "citrate" compartment = "cytoplasm" initialConcentration = "0"/>
+            <species metaid = "metaid_coA" id = "coA" name = "coA" compartment = "cytoplasm" initialConcentration = "1"/>
+            <species metaid = "metaid_OAA" id = "OAA" name = "oxaloacetate" compartment = "cytoplasm" initialConcentration ="0.1"/>
+            <species metaid = "metaid_ac_coA" id = "ac_coA" name = "acetyl-coA" compartment = "cytoplasm" initialConcentration = "0.3"/>
+            <species metaid = "metaid_mal_coA" id = "mal_coA" name = "malonyl-coA" compartment = "cytoplasm" initialConcentration = "0.3"/>
+            <species metaid = "metaid_HCO3" id = "HCO3" name = "HCO3-" compartment = "cytoplasm" initialConcentration = "20" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_NADPH" id = "NADPH" name = "NADPH" compartment = "cytoplasm" initialConcentration = "20" boundaryCondition = "true" constant = "true"/>
+            <species metaid = "metaid_pal_acid" id = "pal_acid" name = "palmitate" compartment = "cytoplasm" initialConcentration = "0.2"/>
+            <species metaid = "metaid_NADP" id = "NADP" name = "NADP" compartment = "cytoplasm" initialConcentration = "10" boundaryCondition = "true" constant = "true"/>
+
+
+
+        </listOfSpecies>
+
+        <listOfParameters>
+            <!-- Parameters for Glucose Transport-->
+            <parameter metaid = "_567" id = "K_GLT" value = "0.1" units = "per_min"/>
+            <!-- Parameters for Hexokinase-->
+            <parameter metaid = "_34" id = "kcat_HK" value = "63.6" units = "per_min"/>
+            <parameter metaid = "_35" id = "Km_HK" value ="0.13" units = "mM"/>
+            <parameter metaid = "_36" id = "E_HK" value = "1" units = "mM"/>
+            <!-- Parameters for phosphoglucoisomerase-->
+            <parameter metaid = "_41" id = "kcat_ISO" value = "30000" units = "per_min"/>
+            <parameter metaid = "_42" id = "E_ISO" value = "0.1" units = "mM"/>
+            <parameter metaid = "_43" id = "Km_ISO" value = "0.29" units = "mM"/>
+            <!--Parameters for Phosphofructokinase-->
+            <parameter metaid = "_50" id = "kcat_PFK" value = "21420" units = "per_min"/>
+            <parameter metaid = "_51" id = "E_PFK" value = "0.00000677" units ="mM"/>
+            <parameter metaid = "_52" id = "Km_PFK" value = "0.29" units = "mM"/>
+            <!--Parameters for Fructosebisphosphate aldolase-->
+            <parameter metaid = "_58" id = "kcat_ALD" value = "36.6" units = "per_min"/>
+            <parameter metaid = "_59" id = "Km_ALD" value = "0.0023" units = "mM"/>
+            <parameter metaid = "_60" id = "E_ALD" value = "0.0000406" units = "mM"/>
+            <!-- Parameters for triose phosphate isomerase-->
+            <parameter metaid = "_65" id = "kcat_TRIO" value = "534000" units = "per_min"/>
+            <parameter metaid = "_66" id = "Km_TRIO" value = "1" units = "mM"/>
+            <parameter metaid = "_67" id = "E_TRIO" value = "0.0000015" units = "mM"/>
+            <!--Parameters for glyceraldehyde-3-phosphate dehydrogenase(phosporylating)-->
+            <parameter metaid = "_76" id = "kcat_TRDE" value = "960" units = "per_min"/>
+            <parameter metaid = "_77" id = "Km_TRDE" value = "0.42" units = "mM"/>
+            <parameter metaid = "_78" id = "E_TRDE" value = "0.000026428" units = "mM"/>
+            <!-- Parameters for phosphoglycerate kinase-->
+            <parameter metaid = "_85" id = "kcat_PKIN" value ="21240" units = "per_min"/>
+            <parameter metaid = "_86" id = "Km_PKIN" value = "0.77" units = "mM"/>
+            <parameter metaid = "_87" id = "E_PKIN" value = "0.02" units = "mM"/>
+            <!-- Parameters for phosphoglyceromutase -->
+            <parameter metaid = "_92" id = "kcat_PISO" value = "23040" units = "per_min"/>
+            <parameter metaid = "_93" id = "Km_PISO" value = "0.65" units = "mM"/>
+            <parameter metaid = "_94" id = "E_PISO" value = "0.01" units = "mM"/>
+            <!-- Parameters for phosphopyruvate hydratase -->
+            <parameter metaid = "_100" id = "Km_PEPH" value = "0.3" units = "mM"/>
+            <parameter metaid = "_101" id = "kcat_PEPH" value = "4680" units = "per_min"/>
+            <parameter metaid = "_102" id = "E_PEPH" value = "0.0009" units = "mM"/>
+            <!-- Parameters for pyruvate kinase-->
+            <parameter metaid = "_109" id = "Km_PYKIN" value = "1.18" units = "mM"/>
+            <parameter metaid = "_110" id = "kcat_PYKIN" value = "13920" units = "per_min"/>
+            <parameter metaid = "_111" id = "E_PYKIN" value = "0.0001" units = "mM"/>
+            <!-- Parameters for pyruvate transport -->
+            <parameter metaid = "_116" id = "k_PYTR" value = "1" units = "per_min"/>
+            <!-- Parameters for pyruvate dehydrogenase-->
+            <parameter metaid = "_125" id = "Km_PYRDE" value = "0.0648" units = "mM"/>
+            <parameter metaid = "_126" id = "kcat_PYRDE" value = "4194" units = "per_min"/>
+            <parameter metaid = "_127" id = "E_PYRDE" value = "0.5" units = "mM"/>
+            <!-- Parameters for citrate synthase-->
+            <parameter metaid = "_135" id = "Km_CIT" value = "0.0077" units = "mM"/>
+            <parameter metaid = "_136" id = "kcat_CIT" value = "1560" units = "per_min"/>
+            <parameter metaid = "_137" id = "E_CIT" value = "0.6" units = "mM"/>
+            <!--Parameters for citrate transport-->
+            <parameter metaid = "_142" id = "k_CITR" value = "1" units = "per_min"/>
+            <!-- Parameters for citrate lyase-->
+            <parameter metaid = "_151" id = "Km_CITL" value = "0.0738" units = "mM"/>
+            <parameter metaid = "_152" id = "kcat_CITL" value = "1018.44" units = "per_min"/>
+            <parameter metaid = "_153" id = "E_CITL" value = "1" units = "mM"/>
+            <!-- Parameters for acetyl coA carboxylase-->
+            <parameter metaid = "_162" id = "Km_ACC" value = "0.053" units = "mM"/>
+            <parameter metaid = "_163" id = "kcat_ACC" value = "510" units = "per_min"/>
+            <parameter metaid = "_164" id = "E_ACC" value = "1" units = "mM"/>
+            <!-- Parameters for Fatty acid synthesis (16:0)-->
+            <parameter metaid = "_178" id = "kcat_FAS" value = "162" units = "per_min"/>
+            <parameter metaid = "_176" id = "Km_FAS" value = "0.006" units = "mM"/>
+            <parameter metaid = "_177" id = "E_FAS" value = "1" units = "mM"/>
+
+        </listOfParameters>
+
+    <!-- end of species defining-->
+        
+
+        <!-- Defining all the reactions and rate laws-->
+        <listOfReactions>
+            <reaction metaid = "metaid_GLT" id = "GLT" name = "glucose transport" reversible = "false">
+                <listOfReactants>
+                    <speciesReference metaid = "_26" species = "GLCo"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference metaid = "_27" species = "GLCi"/>
+                </listOfProducts>
+                <kineticLaw metaid = "_28">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>K_GLT</ci>
+                        <ci>GLCo</ci>
+                    </apply>    
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction metaid = "metaid_HK" id = "HK" name = "hexokinase">
+                <listOfReactants>                        
+                    <speciesReference metaid = "_29" species = "GLCi" stoichiometry = "1"/>
+                    <speciesReference metaid = "_30" species = "ATP" stoichiometry = "1"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference metaid = "_31" species = "G6P" stoichiometry = "1"/>
+                    <speciesReference metaid = "_32" species = "ADP" stoichiometry = "1"/>
+                </listOfProducts>
+                <kineticLaw metaid = "_33">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>kcat_HK</ci>
+                            <ci>E_HK</ci>
+                            <apply>
+                                <divide/>
+                                <ci>GLCi</ci>
+                                <apply>
+                                <plus/>
+                                <ci>GLCi</ci>
+                                <ci>Km_HK</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction metaid = "_37" id = "ISO" name = "phosphoglucoisomerase">
+                <listOfReactants>
+                    <speciesReference metaid = "_38" species = "G6P" stoichiometry = "1"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference metaid = "_39" species = "F6P" stoichiometry = "1"/>
+                </listOfProducts>
+                <kineticLaw metaid = "_40">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>kcat_ISO</ci>
+                            <ci>E_ISO</ci>
+                            <apply>
+                                    <divide/>
+                                    <ci>G6P</ci>
+                                    <apply>
+                                    <plus/>
+                                    <ci>G6P</ci>
+                                    <ci>Km_ISO</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction metaid = "_44" id = "PFK" name = "phosphofructokinase">
+                <listOfReactants>
+                    <speciesReference metaid = "_45" species= "F6P" stoichiometry = "1"/>
+                    <speciesReference metaid = "_46" species= "ATP" stoichiometry = "1"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference metaid = "_47" species = "F16P" stoichiometry = "1"/>
+                    <speciesReference metaid = "_48" species = "ADP" stoichiometry = "1"/>
+                </listOfProducts>
+                <kineticLaw metaid = "_49">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>kcat_PFK</ci>
+                            <ci>E_PFK</ci>
+                                <apply>
+                                <divide/>
+                                <ci>F6P</ci>
+                                <apply>
+                                <plus/>
+                                <ci>F6P</ci>
+                                <ci>Km_PFK</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction metaid = "_53" id = "ALD" name = "fructose-bisphosphate aldolase">
+                <listOfReactants>
+                    <speciesReference metaid = "_54" species = "F16P" stoichiometry = "1"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference metaid = "_55" species = "GP" stoichiometry = "1"/>
+                    <speciesReference metaid = "_56" species = "G3P" stoichiometry = "1"/>
+                </listOfProducts>
+                <kineticLaw metaid = "_57">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>kcat_ALD</ci>
+                            <ci>E_ALD</ci>
+                            <apply>
+                                    <divide/>
+                                    <ci>F16P</ci>
+                                    <apply>
+                                    <plus/>
+                                    <ci>F16P</ci>
+                                    <ci>Km_ALD</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction metaid = "_61" id = "TRIO" name = "triosephosphate isomerase">
+            <listOfReactants>
+                <speciesReference metaid = "_62" species = "GP" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_63" species = "G3P" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_64">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_TRIO</ci>
+                        <ci>E_TRIO</ci>
+                        <apply>
+                                <divide/>
+                                <ci>GP</ci>
+                                <apply>
+                                <plus/>
+                                <ci>GP</ci>
+                                <ci>Km_TRIO</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_68" id = "TRDE" name = "glyceraldehyde-3-phosphate dehydrogenase(phosporylating)">
+            <listOfReactants>
+                <speciesReference metaid = "_69" species = "G3P" stoichiometry = "1"/>
+                <speciesReference metaid = "_70" species = "PHOS" stoichiometry = "1"/>
+                <speciesReference metaid = "_71" species = "NAD" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_72" species = "BPG" stoichiometry = "1"/>
+                <speciesReference metaid = "_73" species = "NADH" stoichiometry = "1"/>
+                <speciesReference metaid = "_74" species = "H" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_75">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_TRDE</ci>
+                        <ci>E_TRDE</ci>
+                        <apply>
+                                <divide/>
+                                <ci>G3P</ci>
+                                <apply>
+                                <plus/>
+                                <ci>G3P</ci>
+                                <ci>Km_TRDE</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid ="_79" id = "PKIN" name = "phosphoglycerate kinase">
+            <listOfReactants>
+                <speciesReference metaid = "_82" species = "P3G" stoichiometry = "1"/>
+                <speciesReference metaid = "_83" species = "ATP" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_80" species = "BPG" stoichiometry = "1"/>
+                <speciesReference metaid = "_81" species = "ADP" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_84">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_PKIN</ci>
+                        <ci>E_PKIN</ci>
+                        <apply>
+                                <divide/>
+                                <ci>P3G</ci>
+                                <apply>
+                                <plus/>
+                                <ci>P3G</ci>
+                                <ci>Km_PKIN</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_88" id = "PISO" name = "phosphoglyceromutase">
+            <listOfReactants>
+                <speciesReference metaid = "_89" species = "P3G" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_90" species = "P2G" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_91">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_PISO</ci>
+                        <ci>E_PISO</ci>
+                        <apply>
+                                <divide/>
+                                <ci>P3G</ci>
+                                <apply>
+                                <plus/>
+                                <ci>P3G</ci>
+                                <ci>Km_PISO</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_95" id = "PEPH" name = "phosphopyruvate hydratase">
+            <listOfReactants>
+                <speciesReference metaid = "_96" species = "P2G" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_97" species = "PEP" stoichiometry = "1"/>
+                <speciesReference metaid = "_98" species = "H2O" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_99">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_PEPH</ci>
+                        <ci>E_PEPH</ci>
+                        <apply>
+                                <divide/>
+                                <ci>P2G</ci>
+                                <apply>
+                                <plus/>
+                                <ci>P2G</ci>
+                                <ci>Km_PEPH</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_103" id = "PYKIN" name = "pyruvate kinase">
+            <listOfReactants>
+                <speciesReference metaid = "_104" species = "PEP" stoichiometry = "1"/>
+                <speciesReference metaid = "_105" species = "ATP" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_106" species = "PYR" stoichiometry = "1"/>
+                <speciesReference metaid = "_107" species = "ADP" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_108">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_PYKIN</ci>
+                        <ci>E_PYKIN</ci>
+                        <apply>
+                                <divide/>
+                                <ci>PEP</ci>
+                                <apply>
+                                <plus/>
+                                <ci>PEP</ci>
+                                <ci>Km_PYKIN</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_112" id = "PYTR" name = "pyruvate transport">
+            <listOfReactants>
+                <speciesReference metaid = "_113" species = "PYR" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_114" species = "PYR_M" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_115">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>k_PYTR</ci>
+                        <ci>PYR</ci>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_117" id = "PYRDE" name = "pyruvate dehydrogenase">
+            <listOfReactants>
+                <speciesReference metaid = "_118" species = "PYR_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_119" species = "NAD_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_120" species = "coA_M" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_123" species = "ac_coA_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_121" species = "CO2_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_122" species = "NADH_M" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_124">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_PYRDE</ci>
+                        <ci>E_PYRDE</ci>
+                        <apply>
+                            <divide/>
+                            <ci>PYR_M</ci>
+                            <apply>
+                            <plus/>
+                            <ci>PYR_M</ci>
+                            <ci>Km_PYRDE</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_128" id = "CITS" name = "citrate synthase">
+            <listOfReactants>
+                <speciesReference metaid = "_129" species = "ac_coA_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_130" species = "OAA_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_131" species = "H2O_M" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_133" species = "CIT_M" stoichiometry = "1"/>
+                <speciesReference metaid = "_132" species = "coA_M" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_134">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_CIT</ci>
+                        <ci>E_CIT</ci>
+                        <apply>
+                                <divide/>
+                                <ci>ac_coA_M</ci>
+                                <apply>
+                                <plus/>
+                                <ci>ac_coA_M</ci>
+                                <ci>Km_CIT</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid = "_138" id = "CITR" name = "citrate transport">
+            <listOfReactants>
+                <speciesReference metaid = "_139" species = "CIT_M" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_140" species = "CIT" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_141">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>k_CITR</ci>
+                        <ci>CIT_M</ci>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <!-- Taken as an approximation from Homo spaiens-->
+        <reaction metaid = "_143" id = "CITL" name = "citrate lyase">
+            <listOfReactants>
+                <speciesReference metaid = "_144" species = "CIT" stoichiometry = "1"/>
+                <speciesReference metaid = "_145" species = "ATP" stoichiometry = "1"/>
+                <speciesReference metaid = "_146" species = "coA" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_147" species = "ac_coA" stoichiometry = "1"/>
+                <speciesReference metaid = "_148" species = "ADP" stoichiometry = "1"/>
+                <speciesReference metaid = "_149" species = "OAA" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_150">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_CITL</ci>
+                        <ci>E_CITL</ci>
+                        <apply>
+                                <divide/>
+                                <ci>CIT</ci>
+                                <apply>
+                                <plus/>
+                                <ci>CIT</ci>
+                                <ci>Km_CITL</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction>
+        <reaction metaid ="_154" id = "ACC" name = "acetyl-coa carboxylase">
+            <listOfReactants>
+                <speciesReference metaid = "_155" species = "ac_coA" stoichiometry = "1"/>
+                <speciesReference metaid = "_156" species = "ATP" stoichiometry = "1"/>
+                <speciesReference metaid = "_157" species = "HCO3" stoichiometry = "1"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_159" species = "mal_coA" stoichiometry = "1"/>
+                <speciesReference metaid = "_158" species = "ADP" stoichiometry = "1"/>
+                <speciesReference metaid = "_160" species = "PHOS" stoichiometry = "1"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_161">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_ACC</ci>
+                        <ci>E_ACC</ci>
+                        <apply>
+                                <divide/>
+                                <ci>ac_coA</ci>
+                                <apply>
+                                <plus/>
+                                <ci>ac_coA</ci>
+                                <ci>Km_ACC</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction> 
+        <reaction metaid = "_165" id = "FAS" name = "fatty acid synthase (16:0)">
+            <listOfReactants>
+                <speciesReference metaid = "_167" species = "mal_coA" stoichiometry = "7"/>
+                <speciesReference metaid = "_166" species = "ac_coA" stoichiometry = "1"/>
+                <speciesReference metaid = "_168" species = "NADPH" stoichiometry = "14"/>
+                <speciesReference metaid = "_169" species = "H" stoichiometry = "14"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference metaid = "_170" species = "pal_acid" stoichiometry = "1"/>
+                <speciesReference metaid = "_171" species = "coA" stoichiometry = "8"/>
+                <speciesReference metaid = "_172" species = "CO2" stoichiometry = "7"/>
+                <speciesReference metaid = "_173" species = "NADP" stoichiometry = "14"/>
+                <speciesReference metaid = "_174" species = "H2O" stoichiometry = "6"/>
+            </listOfProducts>
+            <kineticLaw metaid = "_175">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci>kcat_FAS</ci>
+                        <ci>E_FAS</ci>
+                        <apply>
+                                <divide/>
+                                <ci>mal_coA</ci>
+                                <apply>
+                                <plus/>
+                                <ci>mal_coA</ci>
+                                <ci>Km_FAS</ci>
+                            </apply>
+                        </apply>
+                    </apply>
+                </math>
+            </kineticLaw>
+        </reaction> 
+    </listOfReactions>
+</model>
+</sbml>
