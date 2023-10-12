@@ -92,7 +92,7 @@
             <species metaid = "metaid_ETOH" id = "ETOH" name = "ethanol" compartment = "cytoplasm" initialConcentration = "50" boundaryCondition = "true" constant = "true"/>
             <species metaid = "metaid_CO2" id = "CO2" name = "CO2" compartment= "cytoplasm" initialConcentration = "8" boundaryCondition = "true" constant = "true"/>
             <species metaid = "metaid_ATP" id = "ATP" name = "ATP" compartment = "cytoplasm" initialConcentration = "1.66116"/>
-            <species metaid = "metaid_ADP" id = "ADP" name = "ADP" compartment = "cytoplasm" constant="true" initialConcentration = "1.6769"/>
+            <species metaid = "metaid_ADP" id = "ADP" name = "ADP" compartment = "cytoplasm" boundaryCondition = "true" constant="true" initialConcentration = "1.6769"/>
             <species metaid = "metaid_AMP" id = "AMP" name = "AMP" compartment = "cytoplasm" initialConcentration = "0.76156"/>
             <species metaid = "metaid_F26BP" id = "F26BP" name = "fructose-2,6-bisphosphate" compartment = "cytoplasm" initialConcentration = "0.02" boundaryCondition = "true" constant = "true"/>
             <species metaid = "metaid_GLYout" id = "GLYout" name = "glycerol" compartment = "extracellular" initialConcentration = "8.67" boundaryCondition = "true" constant = "true"/>
@@ -118,78 +118,8 @@
             <species metaid = "metaid_NADP" id = "NADP" name = "NADP" compartment = "cytoplasm" initialConcentration = "10" boundaryCondition = "true" constant = "true"/>
 
 
-
         </listOfSpecies>
 
-        <listOfParameters>
-            <!-- Parameters for Glucose Transport-->
-            <parameter metaid = "_567" id = "K_GLT" value = "0.1" units = "per_min"/>
-            <!-- Parameters for Hexokinase-->
-            <parameter metaid = "_34" id = "kcat_HK" value = "63.6" units = "per_min"/>
-            <parameter metaid = "_35" id = "Km_HK" value ="0.13" units = "mM"/>
-            <parameter metaid = "_36" id = "E_HK" value = "1" units = "mM"/>
-            <!-- Parameters for phosphoglucoisomerase-->
-            <parameter metaid = "_41" id = "kcat_ISO" value = "30000" units = "per_min"/>
-            <parameter metaid = "_42" id = "E_ISO" value = "0.1" units = "mM"/>
-            <parameter metaid = "_43" id = "Km_ISO" value = "0.29" units = "mM"/>
-            <!--Parameters for Phosphofructokinase-->
-            <parameter metaid = "_50" id = "kcat_PFK" value = "21420" units = "per_min"/>
-            <parameter metaid = "_51" id = "E_PFK" value = "0.00000677" units ="mM"/>
-            <parameter metaid = "_52" id = "Km_PFK" value = "0.29" units = "mM"/>
-            <!--Parameters for Fructosebisphosphate aldolase-->
-            <parameter metaid = "_58" id = "kcat_ALD" value = "36.6" units = "per_min"/>
-            <parameter metaid = "_59" id = "Km_ALD" value = "0.0023" units = "mM"/>
-            <parameter metaid = "_60" id = "E_ALD" value = "0.0000406" units = "mM"/>
-            <!-- Parameters for triose phosphate isomerase-->
-            <parameter metaid = "_65" id = "kcat_TRIO" value = "534000" units = "per_min"/>
-            <parameter metaid = "_66" id = "Km_TRIO" value = "1" units = "mM"/>
-            <parameter metaid = "_67" id = "E_TRIO" value = "0.0000015" units = "mM"/>
-            <!--Parameters for glyceraldehyde-3-phosphate dehydrogenase(phosporylating)-->
-            <parameter metaid = "_76" id = "kcat_TRDE" value = "960" units = "per_min"/>
-            <parameter metaid = "_77" id = "Km_TRDE" value = "0.42" units = "mM"/>
-            <parameter metaid = "_78" id = "E_TRDE" value = "0.000026428" units = "mM"/>
-            <!-- Parameters for phosphoglycerate kinase-->
-            <parameter metaid = "_85" id = "kcat_PKIN" value ="21240" units = "per_min"/>
-            <parameter metaid = "_86" id = "Km_PKIN" value = "0.77" units = "mM"/>
-            <parameter metaid = "_87" id = "E_PKIN" value = "0.02" units = "mM"/>
-            <!-- Parameters for phosphoglyceromutase -->
-            <parameter metaid = "_92" id = "kcat_PISO" value = "23040" units = "per_min"/>
-            <parameter metaid = "_93" id = "Km_PISO" value = "0.65" units = "mM"/>
-            <parameter metaid = "_94" id = "E_PISO" value = "0.01" units = "mM"/>
-            <!-- Parameters for phosphopyruvate hydratase -->
-            <parameter metaid = "_100" id = "Km_PEPH" value = "0.3" units = "mM"/>
-            <parameter metaid = "_101" id = "kcat_PEPH" value = "4680" units = "per_min"/>
-            <parameter metaid = "_102" id = "E_PEPH" value = "0.0009" units = "mM"/>
-            <!-- Parameters for pyruvate kinase-->
-            <parameter metaid = "_109" id = "Km_PYKIN" value = "1.18" units = "mM"/>
-            <parameter metaid = "_110" id = "kcat_PYKIN" value = "13920" units = "per_min"/>
-            <parameter metaid = "_111" id = "E_PYKIN" value = "0.0001" units = "mM"/>
-            <!-- Parameters for pyruvate transport -->
-            <parameter metaid = "_116" id = "k_PYTR" value = "1" units = "per_min"/>
-            <!-- Parameters for pyruvate dehydrogenase-->
-            <parameter metaid = "_125" id = "Km_PYRDE" value = "0.0648" units = "mM"/>
-            <parameter metaid = "_126" id = "kcat_PYRDE" value = "4194" units = "per_min"/>
-            <parameter metaid = "_127" id = "E_PYRDE" value = "0.5" units = "mM"/>
-            <!-- Parameters for citrate synthase-->
-            <parameter metaid = "_135" id = "Km_CIT" value = "0.0077" units = "mM"/>
-            <parameter metaid = "_136" id = "kcat_CIT" value = "1560" units = "per_min"/>
-            <parameter metaid = "_137" id = "E_CIT" value = "0.6" units = "mM"/>
-            <!--Parameters for citrate transport-->
-            <parameter metaid = "_142" id = "k_CITR" value = "1" units = "per_min"/>
-            <!-- Parameters for citrate lyase-->
-            <parameter metaid = "_151" id = "Km_CITL" value = "0.0738" units = "mM"/>
-            <parameter metaid = "_152" id = "kcat_CITL" value = "1018.44" units = "per_min"/>
-            <parameter metaid = "_153" id = "E_CITL" value = "1" units = "mM"/>
-            <!-- Parameters for acetyl coA carboxylase-->
-            <parameter metaid = "_162" id = "Km_ACC" value = "0.053" units = "mM"/>
-            <parameter metaid = "_163" id = "kcat_ACC" value = "510" units = "per_min"/>
-            <parameter metaid = "_164" id = "E_ACC" value = "1" units = "mM"/>
-            <!-- Parameters for Fatty acid synthesis (16:0)-->
-            <parameter metaid = "_178" id = "kcat_FAS" value = "162" units = "per_min"/>
-            <parameter metaid = "_176" id = "Km_FAS" value = "0.006" units = "mM"/>
-            <parameter metaid = "_177" id = "E_FAS" value = "1" units = "mM"/>
-
-        </listOfParameters>
 
     <!-- end of species defining-->
         
@@ -211,6 +141,10 @@
                         <ci>GLCo</ci>
                     </apply>    
                     </math>
+                    <listOfParameters>
+                        <!-- Parameters for Glucose Transport-->
+                        <parameter metaid = "_567" id = "K_GLT" value = "0.1" units = "litre_per_min"/>
+                    </listOfParameters>
                 </kineticLaw>
             </reaction>
             <reaction metaid = "metaid_HK" id = "HK" name = "hexokinase">
@@ -239,6 +173,12 @@
                             </apply>
                         </apply>
                     </math>
+                    <listOfParameters>
+                        <!-- Parameters for Hexokinase-->
+                        <parameter metaid = "_34" id = "kcat_HK" value = "63.6" units = "litre_per_min"/>
+                        <parameter metaid = "_35" id = "Km_HK" value ="0.13" units = "mM"/>
+                        <parameter metaid = "_36" id = "E_HK" value = "1" units = "mM"/>
+                    </listOfParameters>
                 </kineticLaw>
             </reaction>
             <reaction metaid = "_37" id = "ISO" name = "phosphoglucoisomerase">
@@ -265,6 +205,12 @@
                             </apply>
                         </apply>
                     </math>
+                    <listOfParameters>
+                        <!-- Parameters for phosphoglucoisomerase-->
+                        <parameter metaid = "_41" id = "kcat_ISO" value = "30000" units = "litre_per_min"/>
+                        <parameter metaid = "_42" id = "E_ISO" value = "0.1" units = "mM"/>
+                        <parameter metaid = "_43" id = "Km_ISO" value = "0.29" units = "mM"/>
+                    </listOfParameters>
                 </kineticLaw>
             </reaction>
             <reaction metaid = "_44" id = "PFK" name = "phosphofructokinase">
@@ -293,6 +239,12 @@
                             </apply>
                         </apply>
                     </math>
+                    <listOfParameters>
+                        <!--Parameters for Phosphofructokinase-->
+                        <parameter metaid = "_50" id = "kcat_PFK" value = "21420" units = "litre_per_min"/>
+                        <parameter metaid = "_51" id = "E_PFK" value = "0.00000677" units ="mM"/>
+                        <parameter metaid = "_52" id = "Km_PFK" value = "0.29" units = "mM"/>
+                    </listOfParameters>
                 </kineticLaw>
             </reaction>
             <reaction metaid = "_53" id = "ALD" name = "fructose-bisphosphate aldolase">
@@ -320,6 +272,12 @@
                             </apply>
                         </apply>
                     </math>
+                    <listOfParameters>
+                        <!--Parameters for Fructosebisphosphate aldolase-->
+                        <parameter metaid = "_58" id = "kcat_ALD" value = "36.6" units = "litre_per_min"/>
+                        <parameter metaid = "_59" id = "Km_ALD" value = "0.0023" units = "mM"/>
+                        <parameter metaid = "_60" id = "E_ALD" value = "0.0000406" units = "mM"/>
+                    </listOfParameters>
                 </kineticLaw>
             </reaction>
             <reaction metaid = "_61" id = "TRIO" name = "triosephosphate isomerase">
@@ -346,6 +304,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for triose phosphate isomerase-->
+                    <parameter metaid = "_65" id = "kcat_TRIO" value = "534000" units = "litre_per_min"/>
+                    <parameter metaid = "_66" id = "Km_TRIO" value = "1" units = "mM"/>
+                    <parameter metaid = "_67" id = "E_TRIO" value = "0.0000015" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_68" id = "TRDE" name = "glyceraldehyde-3-phosphate dehydrogenase(phosporylating)">
@@ -376,6 +340,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!--Parameters for glyceraldehyde-3-phosphate dehydrogenase(phosporylating)-->
+                    <parameter metaid = "_76" id = "kcat_TRDE" value = "960" units = "litre_per_min"/>
+                    <parameter metaid = "_77" id = "Km_TRDE" value = "0.42" units = "mM"/>
+                    <parameter metaid = "_78" id = "E_TRDE" value = "0.000026428" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid ="_79" id = "PKIN" name = "phosphoglycerate kinase">
@@ -404,6 +374,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for phosphoglycerate kinase-->
+                    <parameter metaid = "_85" id = "kcat_PKIN" value ="21240" units = "litre_per_min"/>
+                    <parameter metaid = "_86" id = "Km_PKIN" value = "0.77" units = "mM"/>
+                    <parameter metaid = "_87" id = "E_PKIN" value = "0.02" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_88" id = "PISO" name = "phosphoglyceromutase">
@@ -430,6 +406,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for phosphoglyceromutase -->
+                    <parameter metaid = "_92" id = "kcat_PISO" value = "23040" units = "litre_per_min"/>
+                    <parameter metaid = "_93" id = "Km_PISO" value = "0.65" units = "mM"/>
+                    <parameter metaid = "_94" id = "E_PISO" value = "0.01" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_95" id = "PEPH" name = "phosphopyruvate hydratase">
@@ -457,6 +439,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for phosphopyruvate hydratase -->
+                    <parameter metaid = "_100" id = "Km_PEPH" value = "0.3" units = "mM"/>
+                    <parameter metaid = "_101" id = "kcat_PEPH" value = "4680" units = "litre_per_min"/>
+                    <parameter metaid = "_102" id = "E_PEPH" value = "0.0009" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_103" id = "PYKIN" name = "pyruvate kinase">
@@ -485,6 +473,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for pyruvate kinase-->
+                    <parameter metaid = "_109" id = "Km_PYKIN" value = "1.18" units = "mM"/>
+                    <parameter metaid = "_110" id = "kcat_PYKIN" value = "13920" units = "litre_per_min"/>
+                    <parameter metaid = "_111" id = "E_PYKIN" value = "0.0001" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_112" id = "PYTR" name = "pyruvate transport">
@@ -502,6 +496,10 @@
                         <ci>PYR</ci>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for pyruvate transport -->
+                    <parameter metaid = "_116" id = "k_PYTR" value = "1" units = "litre_per_min"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_117" id = "PYRDE" name = "pyruvate dehydrogenase">
@@ -532,6 +530,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for pyruvate dehydrogenase-->
+                    <parameter metaid = "_125" id = "Km_PYRDE" value = "0.0648" units = "mM"/>
+                    <parameter metaid = "_126" id = "kcat_PYRDE" value = "4194" units = "litre_per_min"/>
+                    <parameter metaid = "_127" id = "E_PYRDE" value = "0.5" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_128" id = "CITS" name = "citrate synthase">
@@ -561,6 +565,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for citrate synthase-->
+                    <parameter metaid = "_135" id = "Km_CIT" value = "0.0077" units = "mM"/>
+                    <parameter metaid = "_136" id = "kcat_CIT" value = "1560" units = "litre_per_min"/>
+                    <parameter metaid = "_137" id = "E_CIT" value = "0.6" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid = "_138" id = "CITR" name = "citrate transport">
@@ -578,9 +588,12 @@
                         <ci>CIT_M</ci>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!--Parameters for citrate transport-->
+                    <parameter metaid = "_142" id = "k_CITR" value = "1" units = "litre_per_min"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
-        <!-- Taken as an approximation from Homo spaiens-->
         <reaction metaid = "_143" id = "CITL" name = "citrate lyase">
             <listOfReactants>
                 <speciesReference metaid = "_144" species = "CIT" stoichiometry = "1"/>
@@ -609,6 +622,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for citrate lyase-->
+                    <parameter metaid = "_151" id = "Km_CITL" value = "0.0738" units = "mM"/>
+                    <parameter metaid = "_152" id = "kcat_CITL" value = "1018.44" units = "litre_per_min"/>
+                    <parameter metaid = "_153" id = "E_CITL" value = "1" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction>
         <reaction metaid ="_154" id = "ACC" name = "acetyl-coa carboxylase">
@@ -639,6 +658,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                    <!-- Parameters for acetyl coA carboxylase-->
+                    <parameter metaid = "_162" id = "Km_ACC" value = "0.053" units = "mM"/>
+                    <parameter metaid = "_163" id = "kcat_ACC" value = "510" units = "litre_per_min"/>
+                    <parameter metaid = "_164" id = "E_ACC" value = "1" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction> 
         <reaction metaid = "_165" id = "FAS" name = "fatty acid synthase (16:0)">
@@ -672,6 +697,12 @@
                         </apply>
                     </apply>
                 </math>
+                <listOfParameters>
+                <!-- Parameters for Fatty acid synthesis (16:0)-->
+                    <parameter metaid = "_178" id = "kcat_FAS" value = "162" units = "litre_per_min"/>
+                    <parameter metaid = "_176" id = "Km_FAS" value = "0.006" units = "mM"/>
+                    <parameter metaid = "_177" id = "E_FAS" value = "1" units = "mM"/>
+                </listOfParameters>
             </kineticLaw>
         </reaction> 
     </listOfReactions>
